@@ -1,10 +1,12 @@
 import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import React, { useState } from 'react';
 import PersonalInfo from './components/PersonalInfo';
+import OpdInfo from './components/OpdInfo';
 
 const PatientPage = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [patientInfo, setPatientInfo] = useState({});
+  const [showOPD, setShowOPD] = useState(false);
 
   const handlePersonalInfo = (data) => {
     setPatientInfo(data);
@@ -37,6 +39,16 @@ const PatientPage = () => {
           </View>
         )
       } */}
+      <TouchableOpacity
+       activeOpacity={0.8}
+       onPress={() => setShowOPD(true)}
+       className="w-full h-[2.5rem] mt-[12px]
+        bg-[#003049] rounded-md items-center justify-center">
+        <Text className="text-[1.2rem] text-white ">Select OPD</Text>
+      </TouchableOpacity>
+      {
+        showOPD && <OpdInfo />
+      }
     </View>
   )
 }

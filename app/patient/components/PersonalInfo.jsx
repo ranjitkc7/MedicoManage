@@ -15,7 +15,7 @@ const PersonalInfo = ({ onSubmit }) => {
         onSubmit(data);
     }
     return (
-        <View className="h-[18rem] flex relative bg-[#003049] p-[10px] mt-[10px] rounded-md">
+        <View className="h-[18rem] flex relative bg-[#003049] p-[10px] mt-[5px] rounded-md">
             <View className="flex-row justify-between">
                 <View className="flex-row gap-[10px]">
                     <Text className="text-[1.3rem] text-white">Name :</Text>
