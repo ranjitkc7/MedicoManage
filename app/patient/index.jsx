@@ -2,17 +2,23 @@ import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import React, { useState } from 'react';
 import PersonalInfo from './components/PersonalInfo';
 import OpdInfo from './components/OpdInfo';
+import DateTimeInfo from './components/DateTimeInfo';
 
 const PatientPage = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [patientInfo, setPatientInfo] = useState({});
   const [showOPD, setShowOPD] = useState(false);
+  const [opdInfo, setOPDInfo] = useState("");
+  const [showTime, setShowTime] = useState(false);
 
   const handlePersonalInfo = (data) => {
     setPatientInfo(data);
     setShowInfo(false);
   };
 
+  const handleOPDInfo = (data) => {
+    setOPDInfo(data);
+  }
   return (
     <View className="flex-1 bg-[#fdf0d5] p-[10px]">
       <Text className="text-[1.3rem] text-center mt-[-6px]">Welocome our online medico</Text>
@@ -40,14 +46,34 @@ const PatientPage = () => {
         )
       } */}
       <TouchableOpacity
-       activeOpacity={0.8}
-       onPress={() => setShowOPD(true)}
-       className="w-full h-[2.5rem] mt-[12px]
+        activeOpacity={0.8}
+        onPress={() => setShowOPD(true)}
+        className="w-full h-[2.5rem] mt-[12px]
         bg-[#003049] rounded-md items-center justify-center">
         <Text className="text-[1.2rem] text-white ">Select OPD</Text>
       </TouchableOpacity>
       {
-        showOPD && <OpdInfo />
+        showOPD && <OpdInfo
+          onSubmit={handleOPDInfo}
+          onClose={() => setShowOPD(false)}
+        />
+      }
+      {
+        //  opdInfo && (
+        //     <View className="flex-row justify-between">
+        //       <Text className="text-[1.2rem]">OPD : {opdInfo}</Text>
+        //     </View>
+        //   )
+      }
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => setShowTime(true)}
+        className="w-full h-[2.5rem] mt-[12px]
+        bg-[#003049] rounded-md items-center justify-center">
+        <Text className="text-[1.2rem] text-white ">Set Date and Time</Text>
+      </TouchableOpacity>
+      {
+        showTime && <DateTimeInfo />
       }
     </View>
   )
